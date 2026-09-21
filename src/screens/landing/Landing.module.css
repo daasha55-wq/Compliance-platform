@@ -1,0 +1,444 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-subtle);
+}
+
+.sectionTitle {
+  margin: 0 0 var(--space-6) 0;
+  color: var(--text-default);
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-4) var(--space-16);
+  background: var(--surface-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-default);
+}
+
+.brandIcon {
+  color: var(--surface-action-primary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex: 1;
+  justify-content: center;
+}
+
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--text-default);
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-16);
+  background: var(--surface-subtle);
+}
+
+.heroLeft {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 560px;
+}
+
+.heroTitle {
+  margin: 0;
+  color: var(--text-default);
+}
+
+.heroSubhead {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.heroCtas {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.heroTrust {
+  color: var(--text-muted);
+}
+
+.heroCard {
+  flex: 0 0 380px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--surface-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-lg);
+}
+
+.heroCardTop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.heroCardRows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.heroCardActions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* Problem */
+.problem {
+  padding: var(--space-16);
+  background: var(--surface-default);
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-6);
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.statNumber {
+  color: var(--surface-action-primary);
+}
+
+/* Regulatory */
+.regulatory {
+  padding: var(--space-16);
+  background: var(--surface-subtle);
+}
+
+.regulatoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+
+.regulatoryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.regulatoryClosing {
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  background: var(--surface-selected);
+  border-radius: var(--radius-md);
+}
+
+/* Differentiators */
+.differentiators {
+  padding: var(--space-16);
+  background: var(--surface-default);
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.diffGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+
+.diffCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.diffRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.diffGapText {
+  color: var(--text-muted);
+}
+
+.diffLawText {
+  display: block;
+  color: var(--surface-action-primary);
+  background: var(--surface-selected);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+}
+
+/* How it works */
+.howItWorks {
+  padding: var(--space-16);
+  background: var(--surface-subtle);
+}
+
+.stepGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.stepCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  background: var(--surface-default);
+  border-radius: var(--radius-md);
+}
+
+.mockTable {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--surface-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Roles */
+.roles {
+  padding: var(--space-16);
+  background: var(--surface-default);
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.roleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-6);
+}
+
+.roleCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.roadmapNote {
+  color: var(--text-muted);
+}
+
+/* Trust */
+.trust {
+  padding: var(--space-16);
+  background: var(--surface-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.trustGrid {
+  display: flex;
+  gap: var(--space-6);
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.trustAuditCard {
+  flex: 1 1 360px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--surface-default);
+  border-radius: var(--radius-md);
+}
+
+.auditPreview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-default);
+}
+
+.auditLine {
+  color: var(--text-muted);
+}
+
+.trustStatusColumn {
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.trustStatusCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--surface-default);
+  border-radius: var(--radius-md);
+}
+
+.trustFootnote {
+  margin-top: var(--space-6);
+  color: var(--text-muted);
+}
+
+/* Pricing */
+.pricing {
+  display: flex;
+  gap: var(--space-16);
+  padding: var(--space-16);
+  background: var(--surface-default);
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.pricingLeft {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.pricingLeft p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.pricingCards {
+  flex: 1 1 360px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.pricingCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.progressTrack {
+  height: 8px;
+  background: var(--surface-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.progressFill {
+  width: 42%;
+  height: 100%;
+  background: var(--surface-action-primary);
+}
+
+/* FAQ */
+.faq {
+  padding: var(--space-16);
+  background: var(--surface-subtle);
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+/* Final CTA */
+.finalCta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-16);
+  background: var(--surface-action-primary);
+  text-align: center;
+}
+
+.finalCtaText {
+  margin: 0;
+  color: var(--text-on-action);
+  max-width: 640px;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  padding: var(--space-16);
+  background: var(--surface-subtle);
+  position: relative;
+}
+
+.footerCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1 1 160px;
+}
+
+.footerCol a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.footerCol a:hover {
+  color: var(--text-default);
+}
+
+.footerNote {
+  width: 100%;
+  color: var(--text-muted);
+  margin-top: var(--space-6);
+}

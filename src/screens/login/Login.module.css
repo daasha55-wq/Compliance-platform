@@ -1,0 +1,49 @@
+.root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-default);
+}
+
+.card {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.brand {
+  color: var(--text-default);
+}
+
+.heading {
+  margin: 0;
+  color: var(--text-default);
+}
+
+.field {
+  display: block;
+}
+
+.field :global(input) {
+  width: 100%;
+}
+
+.submit {
+  width: 100%;
+}
+
+.forgot {
+  color: var(--text-muted);
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: var(--text-error);
+}

@@ -1,0 +1,64 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-16) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.title {
+  margin: 0;
+  color: var(--text-default);
+}
+
+.subtitle {
+  margin: calc(-1 * var(--space-6)) 0 0 0;
+  color: var(--text-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  background: var(--surface-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--surface-action-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.cardName {
+  color: var(--text-default);
+}
+
+.cardDescription {
+  color: var(--text-muted);
+}
+
+.cardRoute {
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+}
+
+.showcaseLink {
+  color: var(--surface-action-primary);
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.showcaseLink:hover {
+  text-decoration: underline;
+}
