@@ -1,0 +1,87 @@
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.pageTitle {
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sectionTitle {
+  margin: 0;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.swatchGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.swatchColor {
+  height: 64px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+}
+
+.swatchName {
+  font-family: var(--font-sans);
+  font-size: var(--size-xs);
+  color: var(--text-muted);
+}
+
+.typeRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-6);
+}
+
+.typeName {
+  width: 220px;
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-size: var(--size-xs);
+  color: var(--text-muted);
+}
+
+.componentBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.componentName {
+  margin: 0;
+  color: var(--text-default);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.tableWrap {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  width: fit-content;
+}

@@ -1,0 +1,14 @@
+@import './tokens/primitives.css';
+@import './tokens/semantics.css';
+@import './tokens/typography.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--surface-subtle);
+  color: var(--text-default);
+}

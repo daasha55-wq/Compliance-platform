@@ -1,0 +1,38 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-default);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.hover {
+  background: var(--surface-subtle);
+}
+
+.cell {
+  font-family: var(--font-sans);
+  font-size: var(--size-sm);
+  color: var(--text-default);
+}
+
+.col0 {
+  width: 120px;
+}
+.col1 {
+  width: 200px;
+}
+.col2 {
+  width: 180px;
+}
+.col3 {
+  width: 120px;
+}
+.col4 {
+  width: 140px;
+}
+.col5 {
+  width: 256px;
+  color: var(--text-error);
+}

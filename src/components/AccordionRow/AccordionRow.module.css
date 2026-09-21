@@ -1,0 +1,24 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-subtle);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+}
+
+.chevron {
+  color: var(--text-default);
+  font-size: var(--size-sm);
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-default);
+}
