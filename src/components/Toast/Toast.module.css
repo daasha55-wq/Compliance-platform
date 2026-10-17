@@ -12,7 +12,7 @@
   font-size: var(--size-sm);
   line-height: var(--line-height-base);
   color: var(--text-default);
-  animation: toastIn 0.2s ease;
+  animation: toastIn var(--duration-base) var(--ease-out);
 }
 
 @keyframes toastIn {

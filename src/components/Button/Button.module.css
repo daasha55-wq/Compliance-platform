@@ -9,7 +9,12 @@
   line-height: var(--line-height-base);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out),
+    transform 120ms var(--ease-out);
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 .button:disabled {
@@ -45,6 +50,16 @@
 }
 .secondary:hover:not(:disabled) {
   background: var(--surface-action-secondary-hover);
+}
+
+/* Type=Danger — irreversible action (reject). Secondary weight, red only in text, so it doesn't compete with Primary. */
+.danger {
+  background: var(--surface-default);
+  color: var(--text-error);
+  border-color: var(--border-default);
+}
+.danger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--text-error) 8%, var(--surface-default));
 }
 
 /* Type=Ghost */

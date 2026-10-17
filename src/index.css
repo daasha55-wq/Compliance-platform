@@ -9,6 +9,6 @@
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background: var(--surface-subtle);
+  background: var(--surface-canvas);
   color: var(--text-default);
 }

@@ -2,6 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import { applyTheme, getInitialTheme } from './foundation/theme'
+
+// Тема ставится до первого рендера, чтобы не мигал светлый экран
+applyTheme(getInitialTheme())
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

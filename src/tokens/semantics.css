@@ -1,5 +1,8 @@
 :root {
+  color-scheme: light;
+
   /* Поверхности */
+  --surface-canvas: var(--gray-50);
   --surface-default: var(--gray-00);
   --surface-subtle: var(--gray-50);
   --surface-action-primary: var(--accent-500);
@@ -25,4 +28,60 @@
   --bg-error: var(--error-500);
   --bg-info: var(--info-500);
   --icon-success: var(--success-500);
+
+  /* Акцентный текст: активный пункт меню, счётчики */
+  --text-accent: var(--accent-700);
+
+  /* Знак и иллюстрации пустых состояний (стиль «Слои») */
+  --illustration-base: var(--gray-100);
+  --illustration-tint: var(--accent-100);
+  --illustration-soft: var(--accent-300);
+  --illustration-primary: var(--accent-500);
+  --illustration-strong: var(--accent-700);
+}
+
+/*
+ * Тёмная тема: те же смысловые токены, другие примитивы.
+ * Компоненты не знают о теме — переключение идёт только здесь.
+ * Глубина строится ступенями поверхностей (canvas → surface → raised), а не обводками:
+ * обводки почти сливаются с фоном, статусы и акцент приглушены.
+ */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --surface-canvas: var(--night-canvas);
+  --surface-default: var(--night-surface);
+  --surface-subtle: var(--night-raised);
+  --surface-action-primary: var(--accent-700);
+  --surface-action-primary-hover: var(--accent-500);
+  --surface-action-secondary-hover: var(--night-raised);
+  --surface-selected: var(--accent-night-tint);
+
+  --text-default: var(--night-text);
+  --text-muted: var(--gray-400);
+  --text-on-action: var(--gray-00);
+  --text-error: var(--error-400);
+
+  --border-default: var(--night-line);
+  --border-strong: var(--night-line-strong);
+  --border-error: var(--error-400);
+  --border-focus-ring: var(--accent-night);
+
+  --bg-success: var(--success-400);
+  --bg-warning: var(--warning-400);
+  --bg-error: var(--error-400);
+  --bg-info: var(--info-400);
+  --icon-success: var(--success-400);
+
+  --text-accent: var(--accent-night);
+
+  --illustration-base: var(--night-raised);
+  --illustration-tint: var(--accent-night-tint);
+  --illustration-soft: var(--accent-900);
+  --illustration-primary: var(--accent-700);
+  --illustration-strong: var(--accent-night);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
 }

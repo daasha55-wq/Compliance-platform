@@ -1,55 +1,106 @@
-.filterBar {
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  background: var(--surface-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.statLabel {
+  color: var(--text-muted);
+}
+
+.statValue {
+  color: var(--text-default);
+  font-variant-numeric: tabular-nums;
+}
+
+.statAlert {
+  color: var(--text-error);
+}
+
+.statHint {
+  color: var(--text-muted);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  /* без overflow: hidden — иначе выпадающие меню фильтров обрезаются краем карточки */
+}
+
+.toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
 }
 
 .filterLeft {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: wrap;
 }
 
-.tierSegment {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--text-default);
+/* Сегментный переключатель тира */
+.segment {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  background: var(--surface-action-secondary-hover);
+  border-radius: var(--radius-md);
 }
 
-.tierButton {
+.segmentButton {
   font-family: var(--font-sans);
   font-size: var(--size-sm);
+  font-weight: var(--weight-medium);
   color: var(--text-muted);
   background: none;
   border: none;
-  padding: var(--space-1) var(--space-2);
+  padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-sm);
   cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
 }
 
-.tierButton:hover {
-  background: var(--surface-action-secondary-hover);
+.segmentButton:hover {
   color: var(--text-default);
 }
 
-.tierButtonActive {
-  color: var(--text-on-action);
-  background: var(--surface-action-primary);
+.segmentButton:focus-visible {
+  outline: 2px solid var(--border-focus-ring);
+  outline-offset: 1px;
 }
 
-.tierButtonActive:hover {
-  background: var(--surface-action-primary-hover);
-  color: var(--text-on-action);
+.segmentButtonActive {
+  background: var(--surface-default);
+  color: var(--text-default);
+  box-shadow: var(--shadow-sm);
+}
+
+.count {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
 }
 
 .table {
   display: flex;
   flex-direction: column;
-  gap: 4px;
 }
 
 .rowButton {
@@ -62,29 +113,47 @@
   cursor: pointer;
   font: inherit;
   color: inherit;
+  opacity: 0;
+  animation: rowIn var(--duration-base) var(--ease-out) forwards;
 }
 
-.emptyPlate {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-4);
-  text-align: center;
-  padding: var(--space-16) 0;
+.rowButton:last-child > div {
+  border-bottom: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
-.emptyIcon {
-  color: var(--text-muted);
+.rowButton:hover > div {
+  background: var(--surface-subtle);
 }
 
-.emptyTitle {
-  margin: 0;
-  color: var(--text-default);
+.rowButton:focus-visible {
+  outline: 2px solid var(--border-focus-ring);
+  outline-offset: -2px;
 }
 
-.emptySubtitle {
-  margin: 0;
-  color: var(--text-muted);
+@keyframes rowIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rowButton:nth-of-type(1) { animation-delay: 0ms; }
+.rowButton:nth-of-type(2) { animation-delay: 40ms; }
+.rowButton:nth-of-type(3) { animation-delay: 80ms; }
+.rowButton:nth-of-type(4) { animation-delay: 120ms; }
+.rowButton:nth-of-type(5) { animation-delay: 160ms; }
+.rowButton:nth-of-type(6) { animation-delay: 200ms; }
+.rowButton:nth-of-type(7) { animation-delay: 240ms; }
+.rowButton:nth-of-type(n+8) { animation-delay: 280ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rowButton {
+    animation: none;
+    opacity: 1;
+  }
 }

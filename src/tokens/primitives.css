@@ -12,8 +12,10 @@
   --gray-100: #F1F5F9;
   --gray-200: #E2E8F0;
   --gray-300: #CBD5E1;
+  --gray-400: #94A3B8;
   --gray-500: #64748B;
   --gray-700: #334155;
+  --gray-800: #1E293B;
   --gray-900: #0F172A;
   --gray-950: #020617;
 
@@ -22,6 +24,22 @@
   --warning-500: #D97706;
   --error-500: #DC2626;
   --info-500: #0891B2;
+
+  /* Тёмная тема: ступени поверхностей — каждая следующая чуть светлее */
+  --night-canvas: #0B101C;
+  --night-surface: #111827;
+  --night-raised: #172033;
+  --night-line: #1C2638;
+  --night-line-strong: #263247;
+  --night-text: #DCE3EC;
+
+  /* Функциональные для тёмной темы: приглушённые, но с контрастом AA на тёмных поверхностях */
+  --success-400: #4CC38A;
+  --warning-400: #E0A84E;
+  --error-400: #EE7B7B;
+  --info-400: #56B4CC;
+  --accent-night: #7EA6F2;
+  --accent-night-tint: #18264A;
 
   /* Типографика */
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -59,4 +77,10 @@
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
   --shadow-md: 0 4px 8px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 12px 24px rgba(15, 23, 42, 0.12);
+
+  /* Движение */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-fast: 160ms;
+  --duration-base: 220ms;
 }

@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { Rows3 } from 'lucide-react'
-import { Tabs } from '../../components'
+import { Button, EmptyState, Tabs } from '../../components'
 import { AppShell } from '../_shared/AppShell'
 import { useCases } from '../../data/CasesContext'
 import styles from './CaseHistory.module.css'
@@ -16,15 +15,23 @@ export default function CaseHistory() {
 
   if (!kase) {
     return (
-      <AppShell logo={<Rows3 size={24} strokeWidth={2} />} title="Кейс не найден" activeNav="case-queue">
-        <p className="ds-body-sm">Кейс #{caseId} не найден.</p>
+      <AppShell breadcrumb={['Очередь кейсов', 'Кейс не найден']} activeNav="case-queue">
+        <EmptyState
+          variant="not-found"
+          title="Кейс не найден"
+          description={`Кейс #${caseId} не найден. Проверьте номер или вернитесь в очередь`}
+          action={
+            <Button type="secondary" size="sm" onClick={() => navigate('/screens/case-queue')}>
+              Вернуться в очередь
+            </Button>
+          }
+        />
       </AppShell>
     )
   }
 
   return (
     <AppShell
-      logo={<Rows3 size={24} strokeWidth={2} />}
       breadcrumb={['Очередь кейсов', `Кейс #${kase.id} — ${kase.applicant}`]}
       activeNav="case-queue"
     >

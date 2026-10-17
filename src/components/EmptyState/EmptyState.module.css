@@ -1,0 +1,82 @@
+.plate {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+}
+
+.art {
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: var(--space-2);
+}
+
+.title {
+  margin: 0;
+  color: var(--text-default);
+}
+
+.description {
+  margin: 0;
+  max-width: 40ch;
+  color: var(--text-muted);
+}
+
+.action {
+  margin-top: var(--space-4);
+}
+
+/* Заливки иллюстрации — только смысловые токены */
+.base { fill: var(--illustration-base); }
+.tint { fill: var(--illustration-tint); }
+.soft { fill: var(--illustration-soft); }
+.primary { fill: var(--illustration-primary); }
+.strong { fill: var(--illustration-strong); }
+
+.slot {
+  fill: none;
+  stroke: var(--illustration-soft);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+
+.drip {
+  fill: none;
+  stroke: var(--illustration-soft);
+  stroke-width: 2;
+  stroke-dasharray: 3 4;
+  stroke-linecap: round;
+}
+
+.check {
+  fill: none;
+  stroke: var(--text-on-action);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.handle {
+  fill: none;
+  stroke: var(--illustration-strong);
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.lens {
+  fill: var(--illustration-tint);
+  stroke: var(--illustration-primary);
+  stroke-width: 6;
+}
+
+.ghost {
+  fill: none;
+  stroke: var(--illustration-soft);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}

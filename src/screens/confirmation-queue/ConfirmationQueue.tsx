@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { MessageCircleDashedCheck } from 'lucide-react'
-import { Dropdown, ConfirmationHeader, ConfirmationRow } from '../../components'
+import { Dropdown, ConfirmationHeader, ConfirmationRow, EmptyState } from '../../components'
 import { AppShell } from '../_shared/AppShell'
 import { useCases } from '../../data/CasesContext'
 import styles from './ConfirmationQueue.module.css'
@@ -30,47 +29,49 @@ export default function ConfirmationQueue() {
 
   return (
     <AppShell
-      logo={<MessageCircleDashedCheck size={24} strokeWidth={2} className={styles.logoIcon} />}
       title="Ожидает подтверждения"
+      subtitle="Эскалации от Compliance Officer: подтвердите или отклоните решение"
       activeNav="confirmations"
-      headerRight={<span className={`${styles.role} ds-body-xs`}>Senior Compliance Officer</span>}
+      role="senior"
     >
-      <div className={styles.filterBar}>
-        <div className={styles.filterLeft}>
-          <span className="ds-body-sm-medium">Тир: Все / Medium / High</span>
-          <Dropdown label={`Сортировка: ${sortBy}`} options={sortOptions} onSelect={(v) => setSortBy(v as SortOption)} />
+      <section className={styles.card}>
+        <div className={styles.filterBar}>
+          <div className={styles.filterLeft}>
+            <Dropdown label={`Сортировка: ${sortBy}`} options={sortOptions} value={sortBy} onSelect={(v) => setSortBy(v as SortOption)} />
+          </div>
+          <span className={`${styles.count} ds-body-sm`}>Ожидают подтверждения: {rows.length}</span>
         </div>
-        <span className="ds-body-sm-medium">{rows.length} {rows.length === 1 ? 'кейс ожидает' : 'кейсов ожидают'} подтверждения</span>
-      </div>
 
-      {rows.length > 0 ? (
-        <div className={styles.table}>
-          <ConfirmationHeader />
-          {rows.map((row) => (
-            <button
-              key={row.id}
-              type="button"
-              className={styles.rowButton}
-              onClick={() => navigate(`/screens/case-detail/${row.id}`)}
-            >
-              <ConfirmationRow
-                tier={row.tier}
-                tierLabel={row.tierLabel.replace(' risk', '')}
-                applicant={row.applicant}
-                escalatedBy={row.escalation!.escalatedBy}
-                note={row.escalation!.note}
-                date={row.escalation!.date}
-                waitingTime={row.escalation!.waitingTime}
-              />
-            </button>
-          ))}
-        </div>
-      ) : (
-        <div className={styles.emptyPlate}>
-          <h2 className={`${styles.emptyTitle} ds-heading-lg`}>Нет кейсов, ожидающих подтверждения</h2>
-          <p className={`${styles.emptySubtitle} ds-body-sm`}>Кейсы появятся здесь, когда Compliance Officer эскалирует решение</p>
-        </div>
-      )}
+        {rows.length > 0 ? (
+          <div className={styles.table}>
+            <ConfirmationHeader />
+            {rows.map((row) => (
+              <button
+                key={row.id}
+                type="button"
+                className={styles.rowButton}
+                onClick={() => navigate(`/screens/case-detail/${row.id}`)}
+              >
+                <ConfirmationRow
+                  tier={row.tier}
+                  tierLabel={row.tierLabel.replace(' risk', '')}
+                  applicant={row.applicant}
+                  escalatedBy={row.escalation!.escalatedBy}
+                  note={row.escalation!.note}
+                  date={row.escalation!.date}
+                  waitingTime={row.escalation!.waitingTime}
+                />
+              </button>
+            ))}
+          </div>
+        ) : (
+          <EmptyState
+            variant="confirm-empty"
+            title="Нет кейсов, ожидающих подтверждения"
+            description="Кейсы появятся здесь, когда Compliance Officer эскалирует решение"
+          />
+        )}
+      </section>
     </AppShell>
   )
 }

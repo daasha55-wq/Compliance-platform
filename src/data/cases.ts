@@ -17,6 +17,13 @@ export interface CaseEscalation {
   waitingTime: string
 }
 
+/** Что вернул конкретный источник данных — показывается рядом, а не усредняется */
+export interface SourceFinding {
+  source: 'Sumsub' | 'ComplyAdvantage'
+  finding: string
+  flagged: boolean
+}
+
 export interface ExplainabilityPoint {
   text: string
 }
@@ -36,6 +43,7 @@ export interface CaseRecord {
   date: string
   discrepancy: string
   discrepancyNote?: string
+  sources?: SourceFinding[]
   modelVersion: string
   explainability: string[]
   documents: string[]
@@ -64,12 +72,16 @@ export const seedCases: CaseRecord[] = [
     date: '24.08.2026',
     discrepancy: '⚠ Расхождение есть',
     discrepancyNote: 'Sumsub и ComplyAdvantage расходятся',
+    sources: [
+      { source: 'Sumsub', finding: 'PEP-списки: совпадений нет', flagged: false },
+      { source: 'ComplyAdvantage', finding: 'PEP-совпадение, 82% схожести', flagged: true },
+    ],
     modelVersion: 'risk-model v2.3',
     explainability: ['PEP-совпадение 82% схожести', 'Страна повышенного риска: Кипр', 'Возраст аккаунта отправителя < 30 дней'],
     documents: ['Паспорт — верифицирован (Sumsub)', 'Подтверждение адреса — на проверке', 'Источник средств — не загружен'],
     rules: ['R-102 PEP screening', 'R-118 Страна повышенного риска', 'R-140 Возраст аккаунта'],
     history: [
-      '24.08.2026, 09:20 — Обнаружено расхождение источников: дата рождения (Sumsub 14.03.1989 vs ComplyAdvantage 14.03.1988)',
+      '24.08.2026, 09:20 — Обнаружено расхождение источников: PEP-совпадение 82% (ComplyAdvantage), совпадений нет (Sumsub)',
       '24.08.2026, 09:15 — Риск-тир присвоен: High, правило risk-model v2.3',
       '24.08.2026, 09:14 — Кейс создан системой, входные данные получены от Sumsub/ComplyAdvantage',
     ],
@@ -136,6 +148,10 @@ export const seedCases: CaseRecord[] = [
     date: '22.08.2026',
     discrepancy: '⚠ Расхождение есть',
     discrepancyNote: 'Sumsub и ComplyAdvantage расходятся',
+    sources: [
+      { source: 'Sumsub', finding: 'Адрес: Минск, ул. Сурганова, 24', flagged: false },
+      { source: 'ComplyAdvantage', finding: 'Адрес: Минск, ул. Сурганова, 42', flagged: true },
+    ],
     modelVersion: 'risk-model v2.2',
     explainability: ['SLA по кейсу истёк 3 часа назад', 'Расхождение в адресе регистрации'],
     documents: ['Паспорт — верифицирован (Sumsub)', 'Подтверждение адреса — расхождение'],
@@ -272,6 +288,10 @@ export const seedCases: CaseRecord[] = [
     date: '24.08.2026',
     discrepancy: '⚠ Расхождение есть',
     discrepancyNote: 'Sumsub и ComplyAdvantage расходятся',
+    sources: [
+      { source: 'Sumsub', finding: 'Адрес совпадает с паспортом', flagged: false },
+      { source: 'ComplyAdvantage', finding: 'Адрес регистрации в другом регионе', flagged: true },
+    ],
     modelVersion: 'risk-model v2.3',
     explainability: ['Расхождение источников критично', 'Юрисдикция повышенного риска'],
     documents: ['Паспорт — верифицирован (Sumsub)', 'Подтверждение адреса — расхождение'],

@@ -1,6 +1,13 @@
-import { Rows3 } from 'lucide-react'
-import { Button, Badge, RiskIndicator, AccordionRow, CaseQueueHeader, CaseQueueRow } from '../../components'
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { Button, Badge, RiskIndicator, AccordionRow, BrandMark, CaseQueueHeader, CaseQueueRow } from '../../components'
+import { HeroDemo } from './HeroDemo'
 import styles from './Landing.module.css'
+
+gsap.registerPlugin(useGSAP)
+
+const heroTitle = 'AI-риск-скоринг для KYC/AML, который выдержит проверку регулятора'
 
 const problemStats: [string, string][] = [
   ['90–95%', 'AML-алертов — false positives. Ваша команда физически не может относиться к каждому кейсу одинаково'],
@@ -29,9 +36,9 @@ const howItWorks: [string, string][] = [
 ]
 
 const mockQueueRows = [
-  { tier: 'low', tierLabel: 'Low', applicant: 'Иван Петров', statusLabel: 'Одобрено (авто)', statusVariant: 'success', sla: '—', date: '24.08.2026', discrepancy: '—' },
-  { tier: 'medium', tierLabel: 'Medium', applicant: 'Ольга Смирнова', statusLabel: 'На проверке', statusVariant: 'warning', sla: '4ч', date: '24.08.2026', discrepancy: '—' },
-  { tier: 'high', tierLabel: 'High', applicant: 'Дмитрий Волков', statusLabel: 'Ожидает решения', statusVariant: 'info', sla: '—', date: '24.08.2026', discrepancy: '⚠ Расхождение есть' },
+  { caseId: '4810', tier: 'low', tierLabel: 'Low', applicant: 'Иван Петров', statusLabel: 'Одобрено (авто)', statusVariant: 'success', sla: '—', date: '24.08.2026', discrepancy: '—' },
+  { caseId: '4807', tier: 'medium', tierLabel: 'Medium', applicant: 'Ольга Смирнова', statusLabel: 'На проверке', statusVariant: 'warning', sla: '4ч', date: '24.08.2026', discrepancy: '—' },
+  { caseId: '4799', tier: 'high', tierLabel: 'High', applicant: 'Дмитрий Волков', statusLabel: 'Ожидает решения', statusVariant: 'info', sla: '—', date: '24.08.2026', discrepancy: '⚠ Расхождение есть' },
 ] as const
 
 const roles: [string, string, boolean][] = [
@@ -61,14 +68,26 @@ const faq: string[] = [
 ]
 
 export default function Landing() {
+  const heroRef = useRef<HTMLElement>(null)
+
+  // Заголовок проявляется по словам из лёгкого размытия, следом — подзаголовок и кнопки
+  useGSAP(
+    () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+      gsap
+        .timeline({ defaults: { ease: 'power3.out' } })
+        .from('[data-word]', { opacity: 0, y: 18, filter: 'blur(10px)', duration: 0.7, stagger: 0.05 })
+        .from('[data-reveal]', { opacity: 0, y: 12, duration: 0.6, stagger: 0.08 }, '-=0.35')
+        .from('[data-demo]', { opacity: 0, y: 40, duration: 0.9 }, 0.25)
+    },
+    { scope: heroRef },
+  )
+
   return (
     <div className={styles.page}>
       {/* Header */}
       <header className={styles.header}>
-        <div className={styles.brand}>
-          <Rows3 size={24} strokeWidth={2} className={styles.brandIcon} />
-          <span className="ds-heading-xl">Compliance Platform</span>
-        </div>
+        <BrandMark size={28} />
         <nav className={styles.nav}>
           <a href="#product" className="ds-body-sm">Продукт</a>
           <a href="#how-it-works" className="ds-body-sm">Как это работает</a>
@@ -79,38 +98,30 @@ export default function Landing() {
       </header>
 
       {/* Hero */}
-      <section className={styles.hero}>
+      <section className={styles.hero} ref={heroRef}>
         <div className={styles.heroLeft}>
-          <h1 className={`${styles.heroTitle} ds-heading-4xl`}>
-            AI-риск-скоринг для KYC/AML, который выдержит проверку регулятора
+          <h1 className={`${styles.heroTitle} ds-heading-4xl`} aria-label={heroTitle}>
+            {heroTitle.split(' ').map((word, i) => (
+              <span key={i} aria-hidden="true">
+                <span data-word className={styles.word}>{word}</span>{' '}
+              </span>
+            ))}
           </h1>
-          <p className={`${styles.heroSubhead} ds-body-base`}>
+          <p data-reveal className={`${styles.heroSubhead} ds-body-base`}>
             Compliance-платформа для растущих финтех-стартапов: KYC, AML, санкционный/PEP-скрининг и explainability
             каждого AI-вердикта — в одной подписке, поверх ваших текущих вендоров.
           </p>
-          <div className={styles.heroCtas}>
+          <div data-reveal className={styles.heroCtas}>
             <Button type="primary" size="lg">Запросить демо</Button>
             <Button type="ghost" size="lg">Как это работает</Button>
           </div>
-          <span className={`${styles.heroTrust} ds-body-xs`}>
+          <span data-reveal className={`${styles.heroTrust} ds-body-xs`}>
             Работает поверх Sumsub и ComplyAdvantage — не требует их замены
           </span>
         </div>
 
-        <div className={styles.heroCard}>
-          <div className={styles.heroCardTop}>
-            <RiskIndicator tier="high">High risk</RiskIndicator>
-            <Badge variant="info" size="md">Ожидает решения</Badge>
-          </div>
-          <div className={styles.heroCardRows}>
-            <AccordionRow label="AML / Sanctions / PEP screening" />
-            <AccordionRow label="Документы" />
-          </div>
-          <div className={styles.heroCardActions}>
-            <Button type="primary" size="sm" disabled>Подтвердить решение</Button>
-            <Button type="secondary" size="sm">Эскалировать</Button>
-            <Button type="secondary" size="sm">Отклонить</Button>
-          </div>
+        <div data-demo className={styles.heroDemo}>
+          <HeroDemo />
         </div>
       </section>
 

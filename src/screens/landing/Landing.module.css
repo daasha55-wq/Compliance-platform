@@ -1,7 +1,7 @@
 .page {
   display: flex;
   flex-direction: column;
-  background: var(--surface-subtle);
+  background: var(--surface-canvas);
 }
 
 .sectionTitle {
@@ -21,17 +21,6 @@
   padding: var(--space-4) var(--space-16);
   background: var(--surface-default);
   border-bottom: 1px solid var(--border-default);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  color: var(--text-default);
-}
-
-.brandIcon {
-  color: var(--surface-action-primary);
 }
 
 .nav {
@@ -57,7 +46,7 @@
   align-items: center;
   gap: var(--space-16);
   padding: var(--space-16);
-  background: var(--surface-subtle);
+  background: var(--surface-canvas);
 }
 
 .heroLeft {
@@ -87,34 +76,15 @@
   color: var(--text-muted);
 }
 
-.heroCard {
-  flex: 0 0 380px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  background: var(--surface-default);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  box-shadow: var(--shadow-lg);
+/* Слова заголовка — inline-block, чтобы сдвиг и размытие работали по каждому слову */
+.word {
+  display: inline-block;
+  will-change: transform, filter, opacity;
 }
 
-.heroCardTop {
+.heroDemo {
+  flex: 0 0 400px;
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.heroCardRows {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-
-.heroCardActions {
-  display: flex;
-  gap: var(--space-2);
-  flex-wrap: wrap;
 }
 
 /* Problem */
@@ -147,7 +117,7 @@
 /* Regulatory */
 .regulatory {
   padding: var(--space-16);
-  background: var(--surface-subtle);
+  background: var(--surface-canvas);
 }
 
 .regulatoryGrid {
@@ -215,7 +185,7 @@
 /* How it works */
 .howItWorks {
   padding: var(--space-16);
-  background: var(--surface-subtle);
+  background: var(--surface-canvas);
 }
 
 .stepGrid {
@@ -274,7 +244,7 @@
 /* Trust */
 .trust {
   padding: var(--space-16);
-  background: var(--surface-subtle);
+  background: var(--surface-canvas);
   display: flex;
   flex-direction: column;
 }
@@ -385,7 +355,7 @@
 /* FAQ */
 .faq {
   padding: var(--space-16);
-  background: var(--surface-subtle);
+  background: var(--surface-canvas);
 }
 
 .faqList {
@@ -417,7 +387,7 @@
   flex-wrap: wrap;
   gap: var(--space-8);
   padding: var(--space-16);
-  background: var(--surface-subtle);
+  background: var(--surface-canvas);
   position: relative;
 }
 

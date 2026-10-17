@@ -1,0 +1,30 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.mark {
+  flex: 0 0 auto;
+}
+
+.layer1 {
+  fill: var(--illustration-strong);
+}
+
+.layer2 {
+  fill: var(--illustration-primary);
+}
+
+.layer3 {
+  fill: var(--illustration-soft);
+}
+
+.wordmark {
+  font-family: var(--font-sans);
+  font-size: var(--size-base);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.015em;
+  color: var(--text-default);
+  white-space: nowrap;
+}

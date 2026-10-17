@@ -1,8 +1,8 @@
 .shell {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  background: var(--surface-default);
+  height: 100vh;
+  background: var(--surface-canvas);
 }
 
 .header {
@@ -11,7 +11,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--space-8);
+  gap: var(--space-6);
+  padding: 0 var(--space-6);
   background: var(--surface-default);
   border-bottom: 1px solid var(--border-default);
 }
@@ -23,34 +24,58 @@
   min-width: 0;
 }
 
-.logoSlot {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
+.brandLink {
+  display: inline-flex;
+  text-decoration: none;
   border-radius: var(--radius-sm);
-  color: var(--surface-action-primary);
 }
 
-.title {
-  margin: 0;
+.brandLink:focus-visible {
+  outline: 2px solid var(--border-focus-ring);
+  outline-offset: 4px;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-default);
+  flex: 0 0 auto;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 0 0 auto;
+}
+
+/* .user поднимает специфичность над базовыми стилями IconButton */
+.user .themeToggle {
+  border-color: transparent;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.user .themeToggle:hover {
+  background: var(--surface-action-secondary-hover);
   color: var(--text-default);
 }
 
-.headerRight {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  flex: 0 0 auto;
+.user .themeToggle:focus-visible {
+  outline: 2px solid var(--border-focus-ring);
+  outline-offset: 2px;
 }
 
-.avatarSlot {
+.userText {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--border-strong);
+  flex-direction: column;
+  align-items: flex-end;
+  color: var(--text-default);
+  line-height: 1.3;
+}
+
+.userRole {
+  color: var(--text-muted);
 }
 
 .body {
@@ -63,31 +88,90 @@
   flex: 0 0 240px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  padding: var(--space-6);
-  background: var(--surface-subtle);
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-3);
+  background: var(--surface-default);
+  border-right: 1px solid var(--border-default);
 }
 
 .navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
   font-family: var(--font-sans);
   font-size: var(--size-sm);
-  font-weight: var(--weight-regular);
+  font-weight: var(--weight-medium);
   color: var(--text-muted);
   text-decoration: none;
-  cursor: default;
-}
-
-a.navItem {
-  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
 }
 
 a.navItem:hover {
+  background: var(--surface-action-secondary-hover);
   color: var(--text-default);
 }
 
-.navItemActive {
+a.navItem:focus-visible {
+  outline: 2px solid var(--border-focus-ring);
+  outline-offset: -2px;
+}
+
+.navItemActive,
+a.navItemActive:hover {
+  background: var(--surface-selected);
+  color: var(--text-accent);
+}
+
+.navItemDisabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.navIcon {
+  flex: 0 0 auto;
+}
+
+.navLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+.navCount {
+  min-width: 22px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-lg);
+  background: var(--surface-subtle);
+  font-size: var(--size-xs);
+  line-height: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.navItemActive .navCount {
+  background: var(--surface-default);
+  color: var(--text-accent);
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--surface-subtle);
   color: var(--text-default);
-  font-weight: var(--weight-medium);
+}
+
+.footerLabel {
+  color: var(--text-muted);
+}
+
+.footerMuted {
+  color: var(--text-muted);
 }
 
 .main {
@@ -98,5 +182,20 @@ a.navItem:hover {
   flex-direction: column;
   gap: var(--space-6);
   padding: var(--space-8);
-  background: var(--surface-default);
+}
+
+.pageHead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.pageTitle {
+  margin: 0;
+  color: var(--text-default);
+}
+
+.pageSubtitle {
+  margin: 0;
+  color: var(--text-muted);
 }

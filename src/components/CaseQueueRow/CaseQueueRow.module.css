@@ -1,10 +1,14 @@
+/* Сетка колонок совпадает с CaseQueueHeader: кейс, тир, заявитель, статус, SLA, дата, расхождение */
 .row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 72px 100px minmax(160px, 1.4fr) 196px 104px 104px minmax(168px, 1fr);
   align-items: center;
-  gap: var(--space-6);
-  padding: var(--space-3) var(--space-4);
+  gap: var(--space-4);
+  min-height: 52px;
+  padding: var(--space-2) var(--space-4);
   background: var(--surface-default);
   border-bottom: 1px solid var(--border-default);
+  transition: background-color var(--duration-fast) var(--ease-out);
 }
 
 .hover {
@@ -12,27 +16,33 @@
 }
 
 .cell {
+  min-width: 0;
   font-family: var(--font-sans);
   font-size: var(--size-sm);
   color: var(--text-default);
 }
 
-.col0 {
-  width: 120px;
+.strong {
+  font-weight: var(--weight-medium);
 }
-.col1 {
-  width: 200px;
+
+.muted {
+  color: var(--text-muted);
 }
-.col2 {
-  width: 180px;
+
+.mono {
+  font-variant-numeric: tabular-nums;
 }
-.col3 {
-  width: 120px;
-}
-.col4 {
-  width: 140px;
-}
-.col5 {
-  width: 256px;
+
+.error {
   color: var(--text-error);
+  font-weight: var(--weight-medium);
+}
+
+.discrepancy {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--text-error);
+  font-weight: var(--weight-medium);
 }

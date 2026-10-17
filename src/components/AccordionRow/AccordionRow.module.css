@@ -1,3 +1,8 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -12,8 +17,20 @@
 }
 
 .chevron {
+  display: inline-block;
   color: var(--text-default);
   font-size: var(--size-sm);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.chevronOpen {
+  transform: rotate(90deg);
+}
+
+.body {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 
 .label {
