@@ -218,10 +218,14 @@ export default function CaseDetail() {
                   ) : (
                     <Info size={16} strokeWidth={2} aria-hidden="true" />
                   )}
-                  <span className="ds-body-xs">
-                    {canConfirm
-                      ? 'Детали просмотрены — решение можно подтвердить'
-                      : 'Откройте хотя бы один раздел деталей, чтобы подтвердить решение'}
+                  {/* обе подсказки в одной ячейке: блок держит высоту длинной, кнопки ниже не прыгают при смене */}
+                  <span className={`${styles.hintText} ds-body-xs`}>
+                    <span aria-hidden={canConfirm} className={canConfirm ? styles.hintHidden : undefined}>
+                      Откройте хотя бы один раздел деталей, чтобы подтвердить решение
+                    </span>
+                    <span aria-hidden={!canConfirm} className={canConfirm ? undefined : styles.hintHidden}>
+                      Детали просмотрены — решение можно подтвердить
+                    </span>
                   </span>
                 </div>
                 <Button type="primary" size="md" className={styles.fullButton} disabled={!canConfirm} onClick={handleApprove}>

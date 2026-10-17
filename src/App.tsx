@@ -6,6 +6,7 @@ import { CasesProvider } from './data/CasesContext'
 import { ToastProvider } from './data/ToastContext'
 import CaseDetail from './screens/case-detail/CaseDetail'
 import CaseHistory from './screens/case-history/CaseHistory'
+import { DemoPlayer } from './demo/DemoPlayer'
 
 const dynamicScreenIds = new Set(['case-detail', 'case-detail-rejected', 'case-history'])
 
@@ -25,6 +26,7 @@ function App() {
                 <Route key={screen.id} path={screen.route} element={<screen.component />} />
               ))}
           </Routes>
+          <DemoPlayer />
         </BrowserRouter>
       </ToastProvider>
     </CasesProvider>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { isDemo } from '../demo/isDemo'
 
 export type Theme = 'light' | 'dark'
 
@@ -24,6 +25,8 @@ export function useTheme() {
 
   useEffect(() => {
     applyTheme(theme)
+    // демо всегда светлое — не перезаписываем им выбор пользователя
+    if (isDemo) return
     try {
       localStorage.setItem(STORAGE_KEY, theme)
     } catch {

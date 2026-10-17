@@ -1,5 +1,6 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { seedCases, currentUser, type CaseRecord } from './cases'
+import { isDemo, DEMO_RESET_EVENT } from '../demo/isDemo'
 
 function nowStamp() {
   const d = new Date()
@@ -19,6 +20,14 @@ const CasesContext = createContext<CasesContextValue | null>(null)
 
 export function CasesProvider({ children }: { children: ReactNode }) {
   const [cases, setCases] = useState<CaseRecord[]>(seedCases)
+
+  // демо-режим крутит сценарий по кругу: перед новым кругом мок-данные возвращаются к исходным
+  useEffect(() => {
+    if (!isDemo) return
+    const reset = () => setCases(seedCases)
+    window.addEventListener(DEMO_RESET_EVENT, reset)
+    return () => window.removeEventListener(DEMO_RESET_EVENT, reset)
+  }, [])
 
   const getCase = useCallback((id: string) => cases.find((c) => c.id === id), [cases])
 

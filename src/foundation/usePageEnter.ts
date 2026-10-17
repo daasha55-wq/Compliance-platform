@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { isDemo } from '../demo/isDemo'
 
 gsap.registerPlugin(useGSAP)
 
@@ -16,7 +17,8 @@ export function usePageEnter<T extends HTMLElement>(watch: unknown) {
     () => {
       if (!ref.current) return
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      if (reduceMotion) {
+      // в демо для портфолио экраны меняются ровно, без въезда — двигается только то, что нажали
+      if (reduceMotion || isDemo) {
         gsap.set(ref.current, { opacity: 1, y: 0 })
         return
       }

@@ -211,6 +211,18 @@
   color: var(--bg-success);
 }
 
+.hintText {
+  display: grid;
+}
+
+.hintText > span {
+  grid-area: 1 / 1;
+}
+
+.hintHidden {
+  visibility: hidden;
+}
+
 .fullButton {
   width: 100%;
 }
